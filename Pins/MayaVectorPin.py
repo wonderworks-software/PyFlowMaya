@@ -1,20 +1,14 @@
+import pymel.core.datatypes as dt
 import json
-import maya.OpenMaya as om
 
 from PyFlow.Core import PinBase
 from PyFlow.Core.Common import *
 
-# Patch some python methods
-def MVectorRepr(self):
-    return "[{0} {1} {2}]".format(self.x, self.y, self.z)
-
-om.MVector.__repr__ = MVectorRepr
-
 
 class MVectorEncoder(json.JSONEncoder):
     def default(self, vec3):
-        if isinstance(vec3, om.MVector):
-            return {om.MVector.__name__: [vec3.x, vec3.y, vec3.z]}
+        if isinstance(vec3, dt.Vector):
+            return {dt.Vector.__name__: [vec3.x, vec3.y, vec3.z]}
         json.JSONEncoder.default(self, vec3)
 
 
@@ -23,15 +17,15 @@ class MVectorDecoder(json.JSONDecoder):
         super(MVectorDecoder, self).__init__(object_hook=self.object_hook, *args, **kwargs)
 
     def object_hook(self, vec3Dict):
-        values = vec3Dict[om.MVector.__name__]
-        return om.MVector(values[0], values[1], values[2])
+        values = vec3Dict[dt.Vector.__name__]
+        return dt.Vector(values[0], values[1], values[2])
 
 
-class MVectorPin(PinBase):
-    """doc string for MVectorPin"""
+class MayaVectorPin(PinBase):
+    """doc string for MayaVectorPin"""
     def __init__(self, name, parent, direction, **kwargs):
-        super(MVectorPin, self).__init__(name, parent, direction, **kwargs)
-        self.setDefaultValue(om.MVector(0.0, 0.0, 0.0))
+        super(MayaVectorPin, self).__init__(name, parent, direction, **kwargs)
+        self.setDefaultValue(dt.Vector(0.0, 0.0, 0.0))
 
     @staticmethod
     def IsValuePin():
@@ -39,17 +33,17 @@ class MVectorPin(PinBase):
 
     @staticmethod
     def supportedDataTypes():
-        return ('MVectorPin',)
+        return ('MayaVectorPin',)
 
     def defaultValue(self):
         if self.isArray():
             return []
         else:
-            return om.MVector()
+            return dt.Vector()
 
     @staticmethod
     def pinDataTypeHint():
-        return 'MVectorPin', om.MVector()
+        return 'MayaVectorPin', dt.Vector()
 
     @staticmethod
     def color():
@@ -57,11 +51,11 @@ class MVectorPin(PinBase):
 
     @staticmethod
     def internalDataStructure():
-        return om.MVector
+        return dt.Vector
 
     @staticmethod
     def processData(data):
-        return MVectorPin.internalDataStructure()(data)
+        return MayaVectorPin.internalDataStructure()(data)
 
     @staticmethod
     def jsonEncoderClass():

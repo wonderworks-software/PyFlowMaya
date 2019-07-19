@@ -4,7 +4,7 @@ from collections import OrderedDict
 from PyFlow.UI.UIInterfaces import IPackage
 
 # Pins
-from PyFlow.Packages.PyFlowMaya.Pins.MVectorPin import MVectorPin
+from PyFlow.Packages.PyFlowMaya.Pins.MayaVectorPin import MayaVectorPin
 
 # Function based nodes
 from PyFlow.Packages.PyFlowMaya.FunctionLibraries.MayaMathLib import MayaMathLib
@@ -20,7 +20,7 @@ _EXPORTERS = OrderedDict()
 
 _FOO_LIBS[MayaMathLib.__name__] = MayaMathLib(PACKAGE_NAME)
 
-_PINS[MVectorPin.__name__] = MVectorPin
+_PINS[MayaVectorPin.__name__] = MayaVectorPin
 
 
 class PyFlowMaya(IPackage):
