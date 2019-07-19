@@ -53,7 +53,7 @@ class MVectorPin(PinBase):
 
     @staticmethod
     def color():
-        return (255, 100, 0, 255)
+        return (10, 50, 120, 255)
 
     @staticmethod
     def internalDataStructure():
