@@ -8,6 +8,7 @@ from PyFlow.Packages.PyFlowMaya.Pins.MayaVectorPin import MayaVectorPin
 
 # Function based nodes
 from PyFlow.Packages.PyFlowMaya.FunctionLibraries.MayaMathLib import MayaMathLib
+from PyFlow.Packages.PyFlowMaya.FunctionLibraries.MayaGeneralLib import MayaGeneralLib
 
 # Factories
 
@@ -19,6 +20,7 @@ _PREFS_WIDGETS = OrderedDict()
 _EXPORTERS = OrderedDict()
 
 _FOO_LIBS[MayaMathLib.__name__] = MayaMathLib(PACKAGE_NAME)
+_FOO_LIBS[MayaGeneralLib.__name__] = MayaGeneralLib(PACKAGE_NAME)
 
 _PINS[MayaVectorPin.__name__] = MayaVectorPin
 
