@@ -3,6 +3,9 @@ PACKAGE_NAME = 'PyFlowMaya'
 from collections import OrderedDict
 from PyFlow.UI.UIInterfaces import IPackage
 
+# Nodes
+from PyFlow.Packages.PyFlowMaya.Nodes.EventCurrentFrameChanged import eventCurrentFrameChanged
+
 # Pins
 from PyFlow.Packages.PyFlowMaya.Pins.MayaVectorPin import MayaVectorPin
 
@@ -18,6 +21,8 @@ _PINS = {}
 _TOOLS = OrderedDict()
 _PREFS_WIDGETS = OrderedDict()
 _EXPORTERS = OrderedDict()
+
+_NODES[eventCurrentFrameChanged.__name__] = eventCurrentFrameChanged
 
 _FOO_LIBS[MayaMathLib.__name__] = MayaMathLib(PACKAGE_NAME)
 _FOO_LIBS[MayaGeneralLib.__name__] = MayaGeneralLib(PACKAGE_NAME)
