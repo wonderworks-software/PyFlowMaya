@@ -1,5 +1,6 @@
 import pymel.core as pm
 
+from PyFlow.Packages.PyFlowMaya.Nodes import EVENT_NODE_HEADER_COLOR
 from PyFlow.Core import NodeBase
 from PyFlow.Core.Common import *
 from PyFlow.Core.NodeBase import NodePinsSuggestionsHelper
@@ -10,7 +11,7 @@ class eventCurrentFrameChanged(NodeBase):
         super(eventCurrentFrameChanged, self).__init__(name)
         self.evaluatePin = self.createOutputPin("Exec", "ExecPin")
         self.currentFramePin = self.createOutputPin("frame", "IntPin")
-        self.headerColor = (150, 0, 0, 255)
+        self.headerColor = EVENT_NODE_HEADER_COLOR
         self.lastFrame = pm.currentTime(q=True)
 
     @staticmethod
