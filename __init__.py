@@ -5,6 +5,7 @@ from PyFlow.UI.UIInterfaces import IPackage
 
 # Nodes
 from PyFlow.Packages.PyFlowMaya.Nodes.EventCurrentFrameChanged import eventCurrentFrameChanged
+from PyFlow.Packages.PyFlowMaya.Nodes.ScriptEntry import scriptEntry
 
 # Pins
 from PyFlow.Packages.PyFlowMaya.Pins.MayaVectorPin import MayaVectorPin
@@ -12,6 +13,9 @@ from PyFlow.Packages.PyFlowMaya.Pins.MayaVectorPin import MayaVectorPin
 # Function based nodes
 from PyFlow.Packages.PyFlowMaya.FunctionLibraries.MayaMathLib import MayaMathLib
 from PyFlow.Packages.PyFlowMaya.FunctionLibraries.MayaGeneralLib import MayaGeneralLib
+
+# Tools
+from PyFlow.Packages.PyFlowMaya.Tools.RunScriptTool import RunScriptTool
 
 # Factories
 
@@ -23,11 +27,14 @@ _PREFS_WIDGETS = OrderedDict()
 _EXPORTERS = OrderedDict()
 
 _NODES[eventCurrentFrameChanged.__name__] = eventCurrentFrameChanged
+_NODES[scriptEntry.__name__] = scriptEntry
 
 _FOO_LIBS[MayaMathLib.__name__] = MayaMathLib(PACKAGE_NAME)
 _FOO_LIBS[MayaGeneralLib.__name__] = MayaGeneralLib(PACKAGE_NAME)
 
 _PINS[MayaVectorPin.__name__] = MayaVectorPin
+
+_TOOLS[RunScriptTool.__name__] = RunScriptTool
 
 
 class PyFlowMaya(IPackage):
