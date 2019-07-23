@@ -25,6 +25,11 @@ class MayaDisplayLib(FunctionLibraryBase):
         return pm.currentUnit(query=True, angle=True, f=fullName)
 
     @staticmethod
+    @IMPLEMENT_NODE(returns=None, nodeType=NodeTypes.Callable, meta={'Category': 'Display', 'Keywords': []})
+    def setCurrentAngularUnit(unit=("StringPin", "deg", {"ValueList": ["deg", "degree", "rad", "radian"]})):
+        return pm.currentUnit(angle=unit)
+
+    @staticmethod
     @IMPLEMENT_NODE(returns=("StringPin", ""), meta={'Category': 'Display', 'Keywords': []})
     def currentTimeUnit():
         return pm.currentUnit(query=True, time=True)
