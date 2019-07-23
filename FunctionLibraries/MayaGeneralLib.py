@@ -10,12 +10,12 @@ class MayaGeneralLib(FunctionLibraryBase):
         super(MayaGeneralLib, self).__init__(packageName)
 
     @staticmethod
-    @IMPLEMENT_NODE(returns=("BoolPin", False), nodeType=NodeTypes.Pure, meta={'Category': 'MayaGeneral', 'Keywords': []})
+    @IMPLEMENT_NODE(returns=("BoolPin", False), nodeType=NodeTypes.Pure, meta={'Category': 'General', 'Keywords': []})
     def objExists(DagPath=("StringPin", "")):
         return pm.objExists(DagPath)
 
     @staticmethod
-    @IMPLEMENT_NODE(returns=('BoolPin', False), nodeType=NodeTypes.Callable, meta={'Category': 'MayaGeneral', 'Keywords': []})
+    @IMPLEMENT_NODE(returns=('BoolPin', False), nodeType=NodeTypes.Callable, meta={'Category': 'General', 'Keywords': []})
     def SetTranslation(dag=('StringPin', ""), vector=('MayaVectorPin', pm.datatypes.Vector())):
         """Sets node translation if node exists"""
         if pm.objExists(dag):
@@ -25,7 +25,7 @@ class MayaGeneralLib(FunctionLibraryBase):
         return False
 
     @staticmethod
-    @IMPLEMENT_NODE(returns=('BoolPin', False), nodeType=NodeTypes.Callable, meta={'Category': 'MayaGeneral', 'Keywords': []})
+    @IMPLEMENT_NODE(returns=('BoolPin', False), nodeType=NodeTypes.Callable, meta={'Category': 'General', 'Keywords': []})
     def SetRotation(dag=('StringPin', ""), vector=('MayaVectorPin', pm.datatypes.Vector())):
         """Sets node rotation if node exists"""
         if pm.objExists(dag):
@@ -35,7 +35,7 @@ class MayaGeneralLib(FunctionLibraryBase):
         return False
 
     @staticmethod
-    @IMPLEMENT_NODE(returns=("BoolPin", False), nodeType=NodeTypes.Callable, meta={'Category': 'MayaGeneral', 'Keywords': []})
+    @IMPLEMENT_NODE(returns=("BoolPin", False), nodeType=NodeTypes.Callable, meta={'Category': 'General', 'Keywords': []})
     def setTransform(DagPath=("StringPin", ""),
                      Location=("MayaVectorPin", pm.datatypes.Vector()),
                      Rotation=("MayaVectorPin", pm.datatypes.Vector()),
@@ -53,7 +53,7 @@ class MayaGeneralLib(FunctionLibraryBase):
             return False
 
     @staticmethod
-    @IMPLEMENT_NODE(returns=("BoolPin", False), nodeType=NodeTypes.Callable, meta={'Category': 'MayaGeneral', 'Keywords': []})
+    @IMPLEMENT_NODE(returns=("BoolPin", False), nodeType=NodeTypes.Callable, meta={'Category': 'General', 'Keywords': []})
     def setKeyFrame(DagPath=("StringPin", ''),
                     AttributeName=("StringPin", '')):
 
@@ -71,7 +71,7 @@ class MayaGeneralLib(FunctionLibraryBase):
                 return False
 
     @staticmethod
-    @IMPLEMENT_NODE(returns=None, meta={'Category': 'MayaGeneral', 'Keywords': []})
+    @IMPLEMENT_NODE(returns=None, meta={'Category': 'General', 'Keywords': []})
     def frameRange(Min=("Reference", ("IntPin", 0)),
                    Max=("Reference", ("IntPin", 0))):
         '''
@@ -81,16 +81,16 @@ class MayaGeneralLib(FunctionLibraryBase):
         Max(pm.playbackOptions(q=True, max=True))
 
     @staticmethod
-    @IMPLEMENT_NODE(returns=None, nodeType=NodeTypes.Callable, meta={'Category': 'MayaGeneral', 'Keywords': []})
+    @IMPLEMENT_NODE(returns=None, nodeType=NodeTypes.Callable, meta={'Category': 'General', 'Keywords': []})
     def setCurrentFrame(CurrentFrame=("IntPin", 0)):
         pm.setCurrentTime(CurrentFrame)
 
     @staticmethod
-    @IMPLEMENT_NODE(returns=("IntPin", 0), meta={'Category': 'MayaGeneral', 'Keywords': []})
+    @IMPLEMENT_NODE(returns=("IntPin", 0), meta={'Category': 'General', 'Keywords': []})
     def currentFrame():
         return pm.currentTime(q=True)
 
     @staticmethod
-    @IMPLEMENT_NODE(returns=("StringPin", []), meta={'Category': 'MayaGeneral', 'Keywords': []})
+    @IMPLEMENT_NODE(returns=("StringPin", []), meta={'Category': 'General', 'Keywords': []})
     def getSelection():
         return [i.name() for i in pm.selected()]

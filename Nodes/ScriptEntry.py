@@ -21,7 +21,7 @@ class scriptEntry(NodeBase):
 
     @staticmethod
     def category():
-        return 'MayaEvents'
+        return 'Events'
 
     @staticmethod
     def keywords():
