@@ -89,8 +89,3 @@ class MayaGeneralLib(FunctionLibraryBase):
     @IMPLEMENT_NODE(returns=("IntPin", 0), meta={'Category': 'General', 'Keywords': []})
     def currentFrame():
         return pm.currentTime(q=True)
-
-    @staticmethod
-    @IMPLEMENT_NODE(returns=("StringPin", []), meta={'Category': 'General', 'Keywords': []})
-    def getSelection():
-        return [i.name() for i in pm.selected()]

@@ -14,6 +14,7 @@ from PyFlow.Packages.PyFlowMaya.Pins.MayaVectorPin import MayaVectorPin
 from PyFlow.Packages.PyFlowMaya.FunctionLibraries.MayaMathLib import MayaMathLib
 from PyFlow.Packages.PyFlowMaya.FunctionLibraries.MayaGeneralLib import MayaGeneralLib
 from PyFlow.Packages.PyFlowMaya.FunctionLibraries.MayaDisplayLib import MayaDisplayLib
+from PyFlow.Packages.PyFlowMaya.FunctionLibraries.MayaSelectionLib import MayaSelectionLib
 
 # Tools
 from PyFlow.Packages.PyFlowMaya.Tools.RunScriptTool import RunScriptTool
@@ -33,6 +34,7 @@ _NODES[scriptEntry.__name__] = scriptEntry
 _FOO_LIBS[MayaMathLib.__name__] = MayaMathLib(PACKAGE_NAME)
 _FOO_LIBS[MayaGeneralLib.__name__] = MayaGeneralLib(PACKAGE_NAME)
 _FOO_LIBS[MayaDisplayLib.__name__] = MayaDisplayLib(PACKAGE_NAME)
+_FOO_LIBS[MayaSelectionLib.__name__] = MayaSelectionLib(PACKAGE_NAME)
 
 _PINS[MayaVectorPin.__name__] = MayaVectorPin
 
@@ -62,4 +64,3 @@ class PyFlowMaya(IPackage):
 	@staticmethod
 	def GetToolClasses():
 		return _TOOLS
-
