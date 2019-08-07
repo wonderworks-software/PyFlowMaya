@@ -89,3 +89,28 @@ class MayaGeneralLib(FunctionLibraryBase):
     @IMPLEMENT_NODE(returns=("IntPin", 0), meta={'Category': 'General', 'Keywords': []})
     def currentFrame():
         return pm.currentTime(q=True)
+
+    @staticmethod
+    @IMPLEMENT_NODE(returns=("BoolPin", False), nodeType=NodeTypes.Callable, meta={'Category': 'General', 'Keywords': []})
+    def parent(parentObj=("StringPin", ""), childObj=("StringPin", ""),
+               absolute=("BoolPin", False),
+               addObject=("BoolPin", False),
+               noConnections=("BoolPin", False),
+               noInvScale=("BoolPin", False),
+               relative=("BoolPin", False),
+               removeObject=("BoolPin", False),
+               shape=("BoolPin", False),
+               world=("BoolPin", False)):
+        """Wrapper for **pm.parent**"""
+        try:
+            pm.parent(childObj, parentObj,
+                      a=absolute,
+                      add=addObject,
+                      nc=noConnections,
+                      nis=noInvScale,
+                      r=relative,
+                      rm=removeObject,
+                      s=shape,
+                      w=world)
+        except:
+            pass
