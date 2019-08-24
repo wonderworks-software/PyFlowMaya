@@ -119,9 +119,9 @@ class MayaGeneralLib(FunctionLibraryBase):
     @IMPLEMENT_NODE(returns=None, nodeType=NodeTypes.Callable, meta={NodeMeta.CATEGORY: 'General', 'Keywords': []})
     def align(alignToLead=("BoolPin", False),
               coordinateSystem=("StringPin", ""),
-              xAxis=("StringPin", "mid", {"ValueList": ["min", "mid", "max", "dist", "stack"]}),
-              yAxis=("StringPin", "mid", {"ValueList": ["min", "mid", "max", "dist", "stack"]}),
-              zAxis=("StringPin", "mid", {"ValueList": ["min", "mid", "max", "dist", "stack"]})):
+              xAxis=("StringPin", "none", {"ValueList": ["min", "mid", "max", "dist", "stack", "none"]}),
+              yAxis=("StringPin", "none", {"ValueList": ["min", "mid", "max", "dist", "stack", "none"]}),
+              zAxis=("StringPin", "none", {"ValueList": ["min", "mid", "max", "dist", "stack", "none"]})):
         try:
             pm.align(atl=alignToLead, cs=coordinateSystem, x=xAxis, y=yAxis, z=zAxis)
         except:
